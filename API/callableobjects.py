@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field, validator
 from typing import Optional
 
 class YahooGetDoc(BaseModel):
-	tags: 			list 	= []
+	tags: 		list 	= []
 	parameters: 	list 	= []
 	operationId:  	str 	= ""
 	description:  	str 	= ""
@@ -14,15 +14,15 @@ class YahooGetDoc(BaseModel):
 
 class YahooApiCall(BaseModel):
 	name:  			str 			=  	Field("", init=False)
-	description: 	str 			= 	""
+	description: 		str 			= 	""
 	BASE: 			str 			= 	Field("https://yfapi.net",
 					 					init=False, exclude=True, repr=False)
 	endpoint: 		str 			= 	Field(..., exclude=True, repr=False)
 	
 	url:  			str 			=  	Field("", init=False, min_length=5)
 	params: 		dict 			= 	Field({}, init=False, exclude=True, repr=False)
-	require_params: list 			=  	Field([], init=False, exclude=True)
-	docs: 			YahooGetDoc  	=  	Field(YahooGetDoc(), repr=False, exclude=True)
+	require_params: 	list 			=  	Field([], init=False, exclude=True)
+	docs: 			YahooGetDoc  		=  	Field(YahooGetDoc(), repr=False, exclude=True)
 
 
 	def __init__(self, **kwargs):
@@ -41,7 +41,7 @@ class YahooApiCall(BaseModel):
 			name: 			str
 			In: 			str = Field(alias="in")
 			required: 		bool
-			description: 	Optional[str]
+			description: 		Optional[str]
 			Schema:  		dict = Field(alias="schema")
 
 			def __init__(self, **kwargs):
