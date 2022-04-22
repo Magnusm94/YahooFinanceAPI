@@ -9,6 +9,7 @@ Python helper library to interact with Yahoo Finance API
 * Add options for different types of databases (json, sqlite, mongodb, postgresql etc)
 * Flask server daemon to view statistics visually
 * Possibilities of system timers to check on a given interval
+* Make available to install with pip
 
 
 ## Resources
