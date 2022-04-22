@@ -13,16 +13,15 @@ class YahooGetDoc(BaseModel):
 		return f"<{type(self).__name__}, keys=[{', '.join([k for k in self.dict().keys()])}]>"
 
 class YahooApiCall(BaseModel):
-	name:  			str 			=  	Field("", init=False)
-	description: 		str 			= 	""
-	BASE: 			str 			= 	Field("https://yfapi.net",
-					 					init=False, exclude=True, repr=False)
-	endpoint: 		str 			= 	Field(..., exclude=True, repr=False)
+	name:  		str 		=  	Field("", init=False)
+	description: 	str 		= 	""
+	BASE: 		str 		= 	Field("https://yfapi.net", init=False, exclude=True, repr=False)
+	endpoint: 	str 		= 	Field(..., exclude=True, repr=False)
 	
-	url:  			str 			=  	Field("", init=False, min_length=5)
-	params: 		dict 			= 	Field({}, init=False, exclude=True, repr=False)
-	require_params: 	list 			=  	Field([], init=False, exclude=True)
-	docs: 			YahooGetDoc  		=  	Field(YahooGetDoc(), repr=False, exclude=True)
+	url:  		str 		=  	Field("", init=False, min_length=5)
+	params: 	dict 		= 	Field({}, init=False, exclude=True, repr=False)
+	require_params: list 		=  	Field([], init=False, exclude=True)
+	docs: 		YahooGetDoc  	=  	Field(YahooGetDoc(), repr=False, exclude=True)
 
 
 	def __init__(self, **kwargs):
@@ -38,11 +37,11 @@ class YahooApiCall(BaseModel):
 
 	def setParamHelper(self):
 		class ParamStructure(BaseModel):
-			name: 			str
-			In: 			str = Field(alias="in")
-			required: 		bool
-			description: 		Optional[str]
-			Schema:  		dict = Field(alias="schema")
+			name: 		str
+			In: 		str = Field(alias="in")
+			required: 	bool
+			description: 	Optional[str]
+			Schema:  	dict = Field(alias="schema")
 
 			def __init__(self, **kwargs):
 				super().__init__(**kwargs)
